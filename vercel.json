@@ -1,17 +1,13 @@
 {
     "version": 2,
-    "builds": [
-      {
-        "src": "/public/**",
-        "use": "vercel-php@0.6.1"
-      }
-    ],
+    "functions": {
+        "api/index.php": { "runtime": "vercel-php@0.6.1" }
+    },
     "routes": [
       { "src": "/api(/.*)?", "dest": "/api/index.php" },
       { "src": "/(.*)", "dest": "/public/index.php" }
     ],
     "env": {
-      "APP_KEY": "base64:QUn87yYhHZ6pLV46+hU+iqgr8wQc7sXvOnqGwNoNsdE=",
       "APP_NAME": "Laravel Vercel",
       "APP_DEBUG": "true",
       "APP_CONFIG_CACHE": "/tmp/config.php",
