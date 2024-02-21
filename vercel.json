@@ -2,13 +2,14 @@
     "regions": [
         "hnd1"
     ],
+    "version": "2",
     "builds": [
         {
             "src": "/api/index.php",
             "use": "vercel-php@0.6.1"
         },
         {
-            "src": "/public/**",
+            "src": "public/**",
             "use": "vercel-php@0.6.1"
         }
     ],
@@ -40,7 +41,7 @@
         "APP_SERVICES_CACHE": "/tmp/services.php",
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie",
+        "SESSION_DRIVER": "database",
         "VIEW_COMPILED_PATH": "/tmp"
     }
 }
