@@ -27,6 +27,6 @@
       "DB_DATABASE": "study_log",
       "DB_USERNAME": "sail",
       "DB_PASSWORD": "password",
-      "SESSION_DRIVER": "database"
+      "SESSION_DRIVER": "cookie"
     }
   }
