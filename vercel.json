@@ -8,7 +8,7 @@
             "use": "vercel-php@0.6.1"
         },
         {
-            "src": "public/**",
+            "src": "/public/**",
             "use": "vercel-php@0.6.1"
         }
     ],
@@ -31,6 +31,7 @@
         }
     ],
     "env": {
+        "APP_KEY": "base64:QUn87yYhHZ6pLV46+hU+iqgr8wQc7sXvOnqGwNoNsdE=",
         "APP_NAME": "Laravel Vercel",
         "APP_DEBUG": "false",
         "APP_CONFIG_CACHE": "/tmp/config.php",
