@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ChartController;
-use App\Models\Subject;
+use App\Http\Controllers\GoogleLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +21,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])
+->name('login.google');
+Route::get('/auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback'])
+->name('login.google.callback');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -59,5 +64,10 @@ Route::middleware('auth')->group(function () {
     ->name('chart-get');
 
 });
+
+Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])
+->name('login.google');
+Route::get('/auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback'])
+->name('login.google.callback');
 
 require __DIR__.'/auth.php';
