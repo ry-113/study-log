@@ -92,18 +92,6 @@
             <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 ホーム
             </x-nav-link>
-            <x-nav-link :href="route('subjects.index')" :active="request()->routeIs(['subjects.index', 'subjects.create'])">
-                科目の管理
-            </x-nav-link>
-            <x-nav-link :href="route('records.create')" :active="request()->routeIs(['records.create'])">
-                新しい記録
-            </x-nav-link>
-            <x-nav-link :href="route('records.index')" :active="request()->routeIs(['records.index', 'records.edit'])">
-                過去の記録
-            </x-nav-link>
-            <x-nav-link :href="route('records.board')" :active="request()->routeIs(['records.board'])">
-                みんなの記録
-            </x-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
