@@ -1,10 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RecordController;
-use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\GoogleLoginController;
+use App\Http\Controllers\LessonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +32,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/chart-get', [ChartController::class, 'chartGet'])
     ->name('chart-get');
+
+    Route::get('/lessons', [LessonController::class, 'index'])
+    ->name('lessons.index');
 });
 
 Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])

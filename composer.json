@@ -10,7 +10,9 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/socialite": "^5.12",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "microcmsio/microcms-php-sdk": "^1.0",
+        "spatie/laravel-permission": "^6.4"
     },
     "require-dev": {
         "askdkc/breezejp": "^1.8",
