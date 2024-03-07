@@ -21,6 +21,13 @@ class MicroCmsService
 
     public function getContents(string $contentName): array
     {
-        return $this->httpClient->list($contentName)->contents;
+        $options = [
+            'orders' => ['number']
+        ];
+        return $this->httpClient->list($contentName, $options)->contents;
+    }
+
+    public function getSingleContent(string $contentName, string $contentId): object {
+        return $this->httpClient->get($contentName, $contentId);
     }
 }

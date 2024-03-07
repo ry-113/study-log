@@ -5,15 +5,17 @@
         </h2>
     </x-slot>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10">
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @foreach ($lessons as $lesson)
-            <div>
-                <p>タイトル {{$lesson->title}}</p>
-                <p>概要 {{$lesson->description}}</p>
-                <p><span>モジュール：{{$lesson->module[0]}} - 単元名：{{$lesson->unit[0]}} - カテゴリー：{{$lesson->category[0]}}</span></p>
-                <p>到達目標：{{$lesson->achievement[0]}}</p>
-                <p>内容 {!! $lesson->content !!}</p>
-            </div>
-        @endforeach
+        <x-lb.element.accordion>
+            @foreach ($units as $unit)
+            <x-lb.element.accordion.group label="{{$unit->name}}">
+                @if (isset($lessons[$unit->id]))
+                    @foreach ($lessons[$unit->id] as $lesson)
+                    <p class="hover:underline"><a href="{{route('lessons.show', $lesson->id)}}">{{$lesson->title}}</a></p>
+                    @endforeach
+                @endif
+            </x-lb.element.accordion.group>
+            @endforeach
+
+        </x-lb.element.accordion>
     </div>
 </x-app-layout>

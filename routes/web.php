@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/lessons', [LessonController::class, 'index'])
     ->name('lessons.index');
+    Route::get('/lessons/{id}', [LessonController::class, 'show'])
+    ->name('lessons.show');
 });
 
 Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])

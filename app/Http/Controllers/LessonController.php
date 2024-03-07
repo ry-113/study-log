@@ -21,10 +21,33 @@ class LessonController extends Controller
      */
     public function index(): View
     {
-        $lessons = $this->microCms->getContents('lessons');
+        $lessonsData = $this->microCms->getContents('lessons');
+        $units = $this->microCms->getContents('units');
 
+        //取得したlessonsDataをunit_idごとにグルーピング
+        $lessons = [];
+        foreach ($lessonsData as $lesson) {
+            $unitId = $lesson->unit->id;
+
+            if (!isset($lessons[$unitId])) {
+                $lessons[$unitId] = [];
+            }
+
+            $lessons[$unitId][] = $lesson;
+        }
+        
         return view('lessons.index', [
             'lessons' => $lessons,
+            'units' => $units
+        ]);
+    }
+
+    public function show(Request $request, string $id): View {
+        $lesson = $this->microCms->getSingleContent('lessons', $id);
+
+        return view('lessons.show', [
+            'lesson' => $lesson,
+            'request' => $request
         ]);
     }
 }
