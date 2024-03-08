@@ -19,12 +19,13 @@ class MicroCmsService
         );
     }
 
-    public function getContents(string $contentName): array
+    public function getContents(string $contentName, array $options = null): array
     {
-        $options = [
-            'orders' => ['number']
-        ];
-        return $this->httpClient->list($contentName, $options)->contents;
+        if($options === null) {
+            return $this->httpClient->list($contentName)->contents;
+        } else {
+            return $this->httpClient->list($contentName, $options)->contents;
+        }
     }
 
     public function getSingleContent(string $contentName, string $contentId): object {

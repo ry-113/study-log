@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\ModuleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,10 +34,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/chart-get', [ChartController::class, 'chartGet'])
     ->name('chart-get');
 
-    Route::get('/lessons', [LessonController::class, 'index'])
+    Route::get('/modules', [ModuleController::class, 'index'])
+    ->name('modules.index');
+
+    Route::get('/modules/{module_id}', [LessonController::class, 'index'])
     ->name('lessons.index');
-    Route::get('/lessons/{id}', [LessonController::class, 'show'])
+    Route::get('/modules/lessons/{id}', [LessonController::class, 'show'])
     ->name('lessons.show');
+    Route::post('/send-question', ['QuestionController::class', 'send']);
 });
 
 Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])

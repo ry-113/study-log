@@ -33,4 +33,5 @@ class GoogleLoginController extends Controller
             throw $e;
         }
     }
+
 }

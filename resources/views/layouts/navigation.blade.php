@@ -15,8 +15,8 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         ホーム
                     </x-nav-link>
-                    <x-nav-link :href="route('lessons.index')" :active="request()->routeIs(['lessons.index', 'lessons.show'])">
-                        講座一覧
+                    <x-nav-link :href="route('modules.index')" :active="request()->routeIs(['modules.index', 'lessons.index', 'lessons.show'])">
+                        学習コンテンツ
                     </x-nav-link>
                 </div>
             </div>

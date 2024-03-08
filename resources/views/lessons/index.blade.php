@@ -10,7 +10,9 @@
             <x-lb.element.accordion.group label="{{$unit->name}}">
                 @if (isset($lessons[$unit->id]))
                     @foreach ($lessons[$unit->id] as $lesson)
-                    <p class="hover:underline"><a href="{{route('lessons.show', $lesson->id)}}">{{$lesson->title}}</a></p>
+                    <p class="hover:underline">
+                        <a href="{{route('lessons.show', ['id' => $lesson->id])}}">{{$lesson->title}}</a>
+                    </p>
                     @endforeach
                 @endif
             </x-lb.element.accordion.group>
