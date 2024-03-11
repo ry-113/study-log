@@ -11,7 +11,6 @@
                 <p class="m-0">{{$module->number}} {{$module->name}}</p>
             </div>
         </a>
-
         @endforeach
     </div>
 </x-app-layout>

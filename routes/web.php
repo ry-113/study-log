@@ -5,6 +5,7 @@ use App\Http\Controllers\ChartController;
 use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,8 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/chart-get', [ChartController::class, 'chartGet'])
-    ->name('chart-get');
+    // Route::get('/chart-get', [ChartController::class, 'chartGet'])
+    // ->name('chart-get');
 
     Route::get('/modules', [ModuleController::class, 'index'])
     ->name('modules.index');
@@ -41,7 +42,7 @@ Route::middleware('auth')->group(function () {
     ->name('lessons.index');
     Route::get('/modules/lessons/{id}', [LessonController::class, 'show'])
     ->name('lessons.show');
-    Route::post('/send-question', ['QuestionController::class', 'send']);
+
 });
 
 Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])
