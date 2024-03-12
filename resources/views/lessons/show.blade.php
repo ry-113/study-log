@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{$lesson->title}}
+            {{$lesson->name}}
         </h2>
         <p>作成日：{{$lesson->createdAt}}</p>
         <p>更新日：{{$lesson->updatedAt}}</p>

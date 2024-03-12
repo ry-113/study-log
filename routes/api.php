@@ -19,4 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/webhook', [WebhookController::class, 'handleWebhook']);
+//webhook用のapiルートを設定
+Route::post('/webhook/module', [WebhookController::class, 'handleModuleWebhook']);
+Route::post('/webhook/unit', [WebhookController::class, 'handleUnitWebhook']);
+Route::post('/webhook/lesson', [WebhookController::class, 'handleLessonWebhook']);

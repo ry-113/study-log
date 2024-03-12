@@ -15,10 +15,10 @@ return new class extends Migration
             $table->string('id')->unique();
             $table->string('module_id');
             $table->foreign('module_id')->references('id')->on('modules');
-            $table->integer('unit_number');
-            $table->string('unit_name');
+            $table->integer('number');
+            $table->string('name');
             $table->string('achievement');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

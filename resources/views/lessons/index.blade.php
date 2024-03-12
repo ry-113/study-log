@@ -11,7 +11,7 @@
                 @if (isset($lessons[$unit->id]))
                     @foreach ($lessons[$unit->id] as $lesson)
                     <p class="hover:underline">
-                        <a href="{{route('lessons.show', ['id' => $lesson->id])}}">{{$lesson->title}}</a>
+                        <a href="{{route('lessons.show', ['id' => $lesson->id])}}">{{$lesson->name}}</a>
                     </p>
                     @endforeach
                 @endif

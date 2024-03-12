@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('modules', function (Blueprint $table) {
             $table->string('id')->unique();
-            $table->string('module_number');
-            $table->string('module_name');
+            $table->string('number');
+            $table->string('name');
             $table->string('achievement');
             $table->text('description')->nullable();
             $table->timestamps();
