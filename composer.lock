@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "72407420928f456d827f5907272408ec",
+    "content-hash": "37fc30aa4b32aa453d2c6a944e036186",
     "packages": [
         {
             "name": "brick/math",
@@ -1044,6 +1044,63 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
+        },
+        {
+            "name": "laravel-notification-channels/google-chat",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-notification-channels/google-chat.git",
+                "reference": "789c2ef706145b970506696a64149f9546f34061"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-notification-channels/google-chat/zipball/789c2ef706145b970506696a64149f9546f34061",
+                "reference": "789c2ef706145b970506696a64149f9546f34061",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3 || ^7.0",
+                "illuminate/notifications": "^9.0.2 || ^10.0",
+                "illuminate/support": "^9.0.2 || ^10.0",
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7.0",
+                "phpunit/phpunit": "^9.5.10"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NotificationChannels\\GoogleChat\\GoogleChatServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NotificationChannels\\GoogleChat\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank Dixon",
+                    "email": "frank@thetreehouse.family",
+                    "homepage": "https://thetreehouse.family",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Google Chat Notification Channel for Laravel (fka. Hangouts Chat)",
+            "homepage": "https://github.com/laravel-notification-channels/google-chat",
+            "support": {
+                "issues": "https://github.com/laravel-notification-channels/google-chat/issues",
+                "source": "https://github.com/laravel-notification-channels/google-chat/tree/v3.1.0"
+            },
+            "time": "2023-02-21T10:38:41+00:00"
         },
         {
             "name": "laravel/framework",

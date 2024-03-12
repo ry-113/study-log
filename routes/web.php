@@ -5,7 +5,7 @@ use App\Http\Controllers\ChartController;
 use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ModuleController;
-use App\Http\Controllers\WebhookController;
+use App\Http\Controllers\GoogleChatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/modules/lessons/{id}', [LessonController::class, 'show'])
     ->name('lessons.show');
 
+    Route::post('/notify', [GoogleChatController::class, 'notify'])
+    ->name('notify');
 });
 
 Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])
