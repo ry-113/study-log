@@ -22,6 +22,30 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Role::firstOrCreate([
+            'name' => 'admin',
+            'guard_name' => 'web'
+        ]);
+        Role::firstOrCreate([
+            'name' => 'instructor',
+            'guard_name' => 'web'
+        ]);
+        Role::firstOrCreate([
+            'name' => 'student',
+            'guard_name' => 'web'
+        ]);
+
+        Permission::firstOrCreate([
+            'name' => 'view-users',
+            'guard_name' => 'web'
+        ]);
+        Permission::firstOrCreate([
+            'name' => 'view-lessons',
+            'guard_name' => 'web'
+        ]);
+    
+    
+
         $adminRole = Role::findByName('admin');
         $permissions = Permission::all();
         $adminRole->givePermissionTo($permissions);
@@ -30,8 +54,6 @@ class AppServiceProvider extends ServiceProvider
         $instructorRole->givePermissionTo([
             'view-users',
             'view-lessons',
-            'create-lessons',
-            'edit-lessons',
         ]);
 
         $studentRole = Role::findByName('student');
