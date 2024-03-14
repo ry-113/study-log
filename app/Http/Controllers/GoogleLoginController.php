@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserRegistered;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,10 @@ class GoogleLoginController extends Controller
             $user = User::firstOrCreate(['email' => $email], [
                 'name' => $socialiteUser->name,
             ]);
+
+            if($user->wasRecentlyCreated) {
+                event(new UserRegistered($user));
+            }
 
             Auth::login($user);
 

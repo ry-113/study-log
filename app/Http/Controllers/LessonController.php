@@ -22,7 +22,7 @@ class LessonController extends Controller
     public function index(string $id): View
     {
         $options = [
-            'orders' => ['number'],
+            'orders' => ['level'],
             'filters' => "module[equals]{$id}",
         ];
         $lessonsData = $this->microCms->getContents('lessons', $options);

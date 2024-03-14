@@ -39,7 +39,7 @@ class WebhookController extends Controller
             [
                 'id' => $contentData['id'],
                 'module_id' => $contentData['module']['id'],
-                'number' => $contentData['number'],
+                'level' => $contentData['level'],
                 'name' => $contentData['name'],
                 'achievement' => $contentData['achievement'],
                 'description' => $contentData['description'] ?? null,
@@ -65,7 +65,7 @@ class WebhookController extends Controller
                 'id' => $contentData['id'],
                 'module_id' => $contentData['module']['id'],
                 'unit_id' => $contentData['unit']['id'],
-                'number' => $contentData['number'],
+                'level' => $contentData['level'],
                 'name' => $contentData['name'],
                 'achievement' => $contentData['achievement'],
                 'description' => $contentData['description'] ?? null,

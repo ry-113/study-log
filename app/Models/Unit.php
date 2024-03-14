@@ -12,7 +12,7 @@ class Unit extends Model
     protected $fillable = [
         'id',
         'module_id',
-        'number',
+        'level',
         'name',
         'achievement',
         'description'

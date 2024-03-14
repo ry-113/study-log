@@ -16,7 +16,10 @@ class ModuleController extends Controller
     }
 
     public function index(): View {
-        $modules = $this->microCms->getContents('modules');
+        $options = [
+            'orders' => ['level'],
+        ];
+        $modules = $this->microCms->getContents('modules', $options);
         return view('modules.index', compact('modules'));
     }
 }

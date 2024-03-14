@@ -13,7 +13,7 @@ class Lesson extends Model
         'id',
         'module_id',
         'unit_id',
-        'number',
+        'level',
         'name',
         'achievement',
         'description'

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('module_id')->references('id')->on('modules');
             $table->string('unit_id');
             $table->foreign('unit_id')->references('id')->on('units');
-            $table->integer('number');
+            $table->integer('level');
             $table->string('name');
             $table->string('achievement');
             $table->text('description');

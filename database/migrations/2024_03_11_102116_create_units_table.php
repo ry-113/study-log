@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('id')->unique();
             $table->string('module_id');
             $table->foreign('module_id')->references('id')->on('modules');
-            $table->integer('number');
+            $table->integer('level');
             $table->string('name');
             $table->string('achievement');
             $table->text('description')->nullable();

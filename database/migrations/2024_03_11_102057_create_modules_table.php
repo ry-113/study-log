@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('modules', function (Blueprint $table) {
             $table->string('id')->unique();
+            $table->integer('level');
             $table->string('number');
             $table->string('name');
             $table->string('achievement');

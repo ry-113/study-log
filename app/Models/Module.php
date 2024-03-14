@@ -11,6 +11,7 @@ class Module extends Model
 
     protected $fillable = [
         'id',
+        'level',
         'number',
         'name',
         'achievement',
