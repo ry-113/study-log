@@ -5,21 +5,17 @@ namespace App\Http\Controllers;
 use App\Services\MicroCmsService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Models\Module;
+use App\Models\Progress;
 
 class ModuleController extends Controller
 {
-    private MicroCmsService $microCms;
-
-    public function __construct(MicroCmsService $microCms)
-    {
-        $this->microCms = $microCms;
-    }
-
     public function index(): View {
-        $options = [
-            'orders' => ['level'],
-        ];
-        $modules = $this->microCms->getContents('modules', $options);
-        return view('modules.index', compact('modules'));
+        $progressModuleIds = Progress::where('user_id', auth()->id())
+            ->distinct('module_id')
+            ->pluck('module_id');
+
+        $modules = Module::orderBy('level')->get();
+        return view('modules.index', compact('modules', 'progressModuleIds'));
     }
 }

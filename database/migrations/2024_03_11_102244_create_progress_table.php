@@ -16,6 +16,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('lesson_id');
             $table->foreign('lesson_id')->references('id')->on('lessons');
+            $table->string('module_id');
+            $table->foreign('module_id')->references('id')->on('modules');
+            $table->string('unit_id');
+            $table->foreign('unit_id')->references('id')->on('units');
             $table->string('status');
             $table->timestamps();
         });

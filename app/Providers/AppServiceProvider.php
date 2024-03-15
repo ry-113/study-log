@@ -65,7 +65,7 @@ class AppServiceProvider extends ServiceProvider
             $user->assignRole('student');
         });
 
-        $user = User::find(1);
+        $user = User::where('email', 'nvdw23029@nvrcd.ac.jp')->first();
         if($user) {
             $user->assignRole('admin');
         }

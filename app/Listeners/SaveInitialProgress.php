@@ -34,6 +34,8 @@ class SaveInitialProgress
         foreach($lessons as $lesson) {
             Progress::create([
                 'lesson_id' => $lesson->id,
+                'module_id' => $lesson->module->id,
+                'unit_id' => $lesson->unit->id,
                 'user_id'=> $user->id,
                 'status' => 'pending'
             ]);
