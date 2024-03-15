@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Services\MicroCmsService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Models\Lesson;
+use App\Models\Unit;
+use App\Models\Progress;
 
 class LessonController extends Controller
 {
@@ -21,37 +24,21 @@ class LessonController extends Controller
      */
     public function index(string $id): View
     {
-        $options = [
-            'orders' => ['level'],
-            'filters' => "module[equals]{$id}",
-        ];
-        $lessonsData = $this->microCms->getContents('lessons', $options);
-        $units = $this->microCms->getContents('units', $options);
+        $lessons = Lesson::with('unit')->whereHas('unit', function ($query) use ($id) {
+            $query->where('module_id', $id);
+        })->orderBy('level')->get();
+        $units = Unit::where('module_id', $id)->orderBy('level')->get();
 
-        //取得したlessonsDataをunit_idごとにグルーピング
-        $lessons = [];
-        foreach ($lessonsData as $lesson) {
-            $unitId = $lesson->unit->id;
-
-            if (!isset($lessons[$unitId])) {
-                $lessons[$unitId] = [];
-            }
-
-            $lessons[$unitId][] = $lesson;
-        }
-
-        return view('lessons.index', [
-            'lessons' => $lessons,
-            'units' => $units
-        ]);
+        $progressUnitIds = Progress::where('user_id', auth()->id())
+            ->distinct('unit_id')
+            ->pluck('unit_id');
+        
+        return view('lessons.index',compact('lessons', 'units', 'progressUnitIds'));
     }
 
     public function show(Request $request): View {
         $lesson = $this->microCms->getSingleContent('lessons', $request->id);
 
-        return view('lessons.show', [
-            'lesson' => $lesson,
-            'request' => $request
-        ]);
+        return view('lessons.show', compact('lesson', 'request'));
     }
 }

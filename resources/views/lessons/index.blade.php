@@ -7,15 +7,23 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10">
         <x-lb.element.accordion>
             @foreach ($units as $unit)
+            @if ($progressUnitIds->contains($unit->id))
             <x-lb.element.accordion.group label="{{$unit->name}}">
-                @if (isset($lessons[$unit->id]))
-                    @foreach ($lessons[$unit->id] as $lesson)
-                    <p class="hover:underline">
-                        <a href="{{route('lessons.show', ['id' => $lesson->id])}}">{{$lesson->name}}</a>
-                    </p>
-                    @endforeach
-                @endif
-            </x-lb.element.accordion.group>
+                @foreach ($lessons->where('unit_id', $unit->id) as $lesson)
+                <p class="hover:underline">
+                    <a href="{{route('lessons.show', ['id' => $lesson->id])}}">{{$lesson->name}}</a>
+                </p>
+                @endforeach
+            </x-lb.element.accordion.group> 
+            @else  
+            <x-lb.element.accordion.group label="{{$unit->name}}" class="opacity-60 pointer-events-none relative" locked="true">
+                @foreach ($lessons->where('unit_id', $unit->id) as $lesson)
+                <p class="hover:underline opacity-40">
+                    <a href="{{route('lessons.show', ['id' => $lesson->id])}}">{{$lesson->name}}</a>
+                </p>
+                @endforeach
+            </x-lb.element.accordion.group> 
+            @endif
             @endforeach
 
         </x-lb.element.accordion>

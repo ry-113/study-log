@@ -17,7 +17,5 @@ class Progress extends Model
         'status'
     ];
 
-    public function lesson() {
-        return $this->belongsTo(Lesson::class);
-    }
+    
 }
