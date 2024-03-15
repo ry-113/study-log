@@ -4,9 +4,9 @@
     'locked' => false
 ])
 
-<div x-data="{ id: $id('accordion') }" class="cursor-pointer group {{$class}}">
+<div x-data="{ id: $id('accordion') }" class="cursor-pointer group ">
     <button @click="setActiveAccordion(id)"
-        class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underline text-lg relative">
+        class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underline text-lg relative {{$class}}">
         <span>{!! $label !!}</span>
 
         <div class="duration-200 ease-out" :class="{ 'rotate-180': activeAccordion == id }">
