@@ -9,6 +9,10 @@ class Module extends Model
 {
     use HasFactory;
 
+    //主キーをUUIDのような文字列にするときに必要
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     protected $fillable = [
         'id',
         'level',

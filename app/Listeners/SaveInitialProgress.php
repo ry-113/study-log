@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Events\UserRegistered;
 use App\Models\Progress;
+use App\Models\Lesson;
 
 class SaveInitialProgress
 {
@@ -24,11 +25,18 @@ class SaveInitialProgress
     public function handle(UserRegistered $event): void
     {
         $user = $event->user;
-        Progress::create([
-            'lesson_id' => '07i6lkfsj',
-            'user_id'=> $user->id,
-            'status' => 'pending'
-        ]);
-        //ここに保存したいテーブルへのデータ保存処理を記述
+
+        $lessons = Lesson::moduleLevelOne()
+                ->unitLevelOne()
+                ->with('module', 'unit')
+                ->get();
+
+        foreach($lessons as $lesson) {
+            Progress::create([
+                'lesson_id' => $lesson->id,
+                'user_id'=> $user->id,
+                'status' => 'pending'
+            ]);
+        }
     }
 }
