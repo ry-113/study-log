@@ -18,5 +18,12 @@
             <br>
             <x-secondary-button type="submit">送信</x-secondary-button>
         </form>
+
+        <form action="{{route('progress.update',['lesson_id' => $lesson->id, 'status' => 'completed'])}}" method="POST" class="flex justify-end my-5">
+            @csrf
+            @method('patch')
+            <x-primary-button>次の講座へ進む ></x-primary-button>
+        </form>
+
     </div>
 </x-app-layout>

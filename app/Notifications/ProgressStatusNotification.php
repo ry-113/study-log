@@ -9,21 +9,21 @@ use Illuminate\Notifications\Notification;
 use NotificationChannels\GoogleChat\GoogleChatChannel;
 use NotificationChannels\GoogleChat\GoogleChatMessage;
 
-class GoogleChat extends Notification
+class ProgressStatusNotification extends Notification
 {
     use Queueable;
 
     protected $user;
     protected $lesson;
-    protected $question;
+    protected $status;
     /**
      * Create a new notification instance.
      */
-    public function __construct($user, $lesson, $question)
+    public function __construct($user, $lesson, $status)
     {
         $this->user = $user;
         $this->lesson = $lesson;
-        $this->question = $question;
+        $this->status = $status;
     }
 
     /**
@@ -40,14 +40,10 @@ class GoogleChat extends Notification
 
     public function toGoogleChat(object $notifiable) {
         $chatMessage = new GoogleChatMessage();
-        $chatMessage->text('ユーザーネーム：' . $this->user->name)
-                    ->line('モジュール名：' . $this->lesson['module']['number'] . ' ' . $this->lesson['module']['name'])
-                    ->line('単元名：' . $this->lesson['unit']['name'])
-                    ->line('講座名：' . $this->lesson['name'])
-                    ->line('質問内容：' . $this->question);
+        $chatMessage->text('【進捗報告】')
+                    ->line("{$this->user->name}さんが講座「{$this->lesson->name}」を終了しました。指導員の方はチェックをして承認してください。");
 
         return $chatMessage;
-        //ここにプロパティを組み合わせて最終的なメッセージを生成
     }
 
     /**

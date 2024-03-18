@@ -5,7 +5,9 @@ use App\Http\Controllers\ChartController;
 use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ModuleController;
-use App\Http\Controllers\GoogleChatController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\ProgressController;
+use App\Models\Lesson;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,8 +44,12 @@ Route::middleware('auth')->group(function () {
     ->name('lessons.index');
     Route::get('/modules/lessons/{id}', [LessonController::class, 'show'])
     ->name('lessons.show');
+    Route::get('/lesson/{lesson_id}/next',[LessonController::class, 'next'])
+    ->name('lesson.next');
 
-    Route::post('/notify', [GoogleChatController::class, 'notify'])
+    Route::patch('/progress/update/{lesson_id}/{status}', [ProgressController::class, 'update'])
+    ->name('progress.update');
+    Route::post('/notify', [QuestionController::class, 'notify'])
     ->name('notify');
 });
 
