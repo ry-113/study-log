@@ -10,6 +10,11 @@ use App\Notifications\ProgressStatusNotification;
 
 class ProgressController extends Controller
 {
+    public function index(Request $request) {
+        $progresses = Progress::orderBy('updated_at', 'desc')->paginate(10);
+        return view('progress.index', compact('progresses'));
+    }
+
     public function update(Request $request) {
         //進捗の更新
         $user_id = auth()->id();

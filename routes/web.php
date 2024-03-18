@@ -46,11 +46,13 @@ Route::middleware('auth')->group(function () {
     ->name('lessons.show');
     Route::get('/lesson/{lesson_id}/next',[LessonController::class, 'next'])
     ->name('lesson.next');
-
+    Route::post('/question/notify', [QuestionController::class, 'notify'])
+    ->name('question.notify');
     Route::patch('/progress/update/{lesson_id}/{status}', [ProgressController::class, 'update'])
     ->name('progress.update');
-    Route::post('/notify', [QuestionController::class, 'notify'])
-    ->name('notify');
+    Route::get('/progress', [ProgressController::class, 'index'])
+    ->name('progress.index');
+    
 });
 
 Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])

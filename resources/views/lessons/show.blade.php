@@ -11,7 +11,7 @@
            {!! $lesson->content !!}
         </div>
 
-        <form action="{{ route('notify', ['lesson' => $lesson]) }}" method="post" class="bg-white p-10 rounded-lg">
+        <form action="{{ route('question.notify', ['lesson' => $lesson]) }}" method="post" class="bg-white p-10 rounded-lg">
             @csrf
             <x-input-label for="question">質問文がある方はこちらに入力して送信してください。</x-input-label>
             <textarea name="question" id="question" class="w-full h-40"></textarea>

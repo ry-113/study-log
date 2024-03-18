@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('modules.index')" :active="request()->routeIs(['modules.index', 'lessons.index', 'lessons.show'])">
                         学習コンテンツ
                     </x-nav-link>
+                    <x-nav-link :href="route('progress.index')" :active="request()->routeIs(['progress.index'])">
+                        ユーザー進捗
+                    </x-nav-link>
                 </div>
             </div>
 
