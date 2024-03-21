@@ -26,11 +26,12 @@
             {{ $colgroup }}
         @else
             <colgroup>
-                <col class="w-2/3 lg:w-3/12">
+                <col class="w-2/3 lg:w-2/12">
+                <col class="lg:w-2/12">
                 <col class="lg:w-3/12">
-                <col class="lg:w-2/12">
-                <col class="lg:w-2/12">
-                <col class=" lg:w-2/12">
+                <col class="lg:w-3/12">
+                <col class=" lg:w-1/12">
+                <col class=" lg:w-1/12">
             </colgroup>
         @endisset
 

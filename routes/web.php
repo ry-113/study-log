@@ -52,6 +52,8 @@ Route::middleware('auth')->group(function () {
     ->name('progress.update');
     Route::get('/progress', [ProgressController::class, 'index'])
     ->name('progress.index');
+    Route::get('/progress/{progress}', [ProgressController::class, 'show'])
+    ->name('progress.show');
     
 });
 

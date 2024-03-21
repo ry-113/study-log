@@ -40,9 +40,14 @@ class ProgressStatusNotification extends Notification
 
     public function toGoogleChat(object $notifiable) {
         $chatMessage = new GoogleChatMessage();
-        $chatMessage->text('【進捗報告】')
-                    ->line("{$this->user->name}さんが講座「{$this->lesson->name}」を終了しました。指導員の方はチェックをして承認してください。");
+        $chatMessage->text('【進捗報告】');
 
+        if($this->status === 'completed') {
+            $chatMessage->line("{$this->user->name}さんが講座「{$this->lesson->name}」を終了しました。指導員の方はチェックをして承認してください。");
+        } elseif ($this->status === 'approved') {
+            $chatMessage->line("{$this->user->name}さんの講座「{$this->lesson->name}」は承認されました。");
+        }
+                    
         return $chatMessage;
     }
 

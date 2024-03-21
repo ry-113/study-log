@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('modules.index')" :active="request()->routeIs(['modules.index', 'lessons.index', 'lessons.show'])">
                         学習コンテンツ
                     </x-nav-link>
-                    <x-nav-link :href="route('progress.index')" :active="request()->routeIs(['progress.index'])">
+                    <x-nav-link :href="route('progress.index')" :active="request()->routeIs(['progress.index', 'progress.show'])">
                         ユーザー進捗
                     </x-nav-link>
                 </div>
@@ -27,7 +27,7 @@
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <img
-                src="{{ isset(Auth::user()->profile_photo_path) ? asset('storage/' . Auth::user()->profile_photo_path) : asset('images/user_icon.png') }}"
+                src="{{ str_starts_with(Auth::user()->profile_photo_path, 'http') ? Auth::user()->profile_photo_path : asset('storage/' . Auth::user()->profile_photo_path) }}"
                 alt=""
                 class="w-10 h-10 rounded-full object-cover border-none">
                 <x-dropdown align="right" width="48">

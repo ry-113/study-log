@@ -21,9 +21,11 @@ class GoogleLoginController extends Controller
         try {
             $socialiteUser = Socialite::driver('google')->user();
             $email = $socialiteUser->email;
+            $avatar = $socialiteUser->getAvatar();
 
             $user = User::firstOrCreate(['email' => $email], [
                 'name' => $socialiteUser->name,
+                'profile_photo_path' => $avatar
             ]);
 
             if($user->wasRecentlyCreated) {

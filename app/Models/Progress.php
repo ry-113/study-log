@@ -17,5 +17,20 @@ class Progress extends Model
         'status'
     ];
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function module() {
+        return $this->belongsTo(Module::class);
+    }
+
+    public function unit() {
+        return $this->belongsTo(Unit::class);
+    }
+
+    public function lesson() {
+        return $this->belongsTo(Lesson::class);
+    }
     
 }

@@ -1,1 +1,1 @@
- {{ $records->withQueryString()->links('components.lb.element.table.pagination-design') }}
+ {{ $progresses->withQueryString()->links('components.lb.element.table.pagination-design') }}
